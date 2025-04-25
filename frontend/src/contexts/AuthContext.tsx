@@ -1,1 +1,1 @@
-//Contexto de autenticación
+// Authentication context

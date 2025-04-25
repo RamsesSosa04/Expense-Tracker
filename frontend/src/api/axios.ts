@@ -1,1 +1,1 @@
-// Configuración base de Axios
+// Axios base configuration

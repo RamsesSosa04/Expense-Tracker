@@ -1,1 +1,1 @@
-# App principal FastAPI
+# FastAPI main app

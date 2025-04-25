@@ -1,1 +1,1 @@
-// Contexto de tema, cambia entre modo claro/oscuro
+// Theme context, switch beetwen light/dark mode
