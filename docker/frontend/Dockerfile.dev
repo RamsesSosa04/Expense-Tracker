@@ -1,0 +1,24 @@
+# docker/frontend/Dockerfile.dev
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copiar package.json primero para cachear
+COPY ./frontend/package.json ./frontend/package-lock.json /app/
+
+# Instalar dependencias
+RUN npm install
+
+# Copiar el resto del código
+COPY ./frontend /app
+
+# Variables de entorno (pueden ser sobreescritas en docker-compose)
+ENV VITE_API_BASE_URL=http://localhost:8000
+ENV VITE_APP_NAME=ExpenseTracker
+
+# Puerto expuesto
+EXPOSE 3000
+
+# Comando para desarrollo (con recarga automática)
+CMD ["npm", "run", "dev"]
