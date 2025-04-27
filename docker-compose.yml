@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .  # Cambiado de .. a .
+      dockerfile: docker/backend/Dockerfile.dev
+    volumes:
+      - ./backend:/app  # Montar código fuente
+      - backend-data:/app/sql_app.db  # Volumen para persistencia
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app  # Asegurar que Python encuentra los módulos
+      - DATABASE_URL=sqlite:////app/sql_app.db
+      - JWT_SECRET=siholaquetal
+      - JWT_ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    networks:
+      - expense-tracker-network
+
+  frontend:
+    build:
+      context: .  # Cambiado de .. a .
+      dockerfile: docker/frontend/Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - expense-tracker-network
+
+volumes:
+  backend-data:
+
+networks:
+  expense-tracker-network:
+    driver: bridge

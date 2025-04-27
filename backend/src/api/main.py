@@ -1,8 +1,13 @@
-# FastAPI main app
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Hola mundo"}
+# CORS se configura aquí 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # donde corre React
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
