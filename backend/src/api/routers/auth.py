@@ -5,12 +5,10 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 @router.post("/register", response_model=Token)
 def register(user: UserCreate):
-    # Crear usuario y devolver token
     pass
 
 @router.post("/login", response_model=Token)
 def login(user: UserLogin):
-    # Validar y devolver token
     pass
 
 @router.get("/me")
