@@ -1,1 +1,1 @@
-Este proyecto consiste en dos entidades user y gasto
+Este proyecto consiste en dos entidades user y gasto.
