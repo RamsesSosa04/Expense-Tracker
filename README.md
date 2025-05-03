@@ -1,1 +1,1 @@
-Este proyecto consiste en dos entidades user y gasto.
+This project consists of two entities: user and expense.
