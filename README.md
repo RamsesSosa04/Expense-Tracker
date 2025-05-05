@@ -1,1 +1,1 @@
-This project consists of two entities: user and expense.
+This project consists of two entities: user and expense. I'm using Python and TypeScript.
